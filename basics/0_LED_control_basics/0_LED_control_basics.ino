@@ -24,12 +24,25 @@ void setup() {
   blink_an_LED(LED_1, 800, 3);
 
   blink_when_click(LED_2, 800, 3, BUTTON_0);
+
+  delay(300);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
-  
+  // After the setup functions the LEDs will blink continually at different speeds
+  digitalWrite(LED_0, HIGH);
+  digitalWrite(LED_1, HIGH);
+  digitalWrite(LED_2, HIGH);
+
+  delay(500);
+  digitalWrite(LED_2, LOW);
+  delay(500);
+  digitalWrite(LED_1, LOW);
+  delay(1000);
+  digitalWrite(LED_0, LOW);
+  delay(1000);
+
 }
 
 // The function below blinks an LED a specified number of times, with a specified blinking interval time
