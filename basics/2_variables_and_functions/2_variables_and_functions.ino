@@ -22,7 +22,8 @@ void setup() {
   int setup_local_variable = 10; // declare a local variable in setup
   
   Serial.begin(BAUD_RATE);
-  
+
+  // print all the variables to the serial monitor
   print_var_to_monitor(logic);
   print_var_to_monitor(integer_num);
   print_var_to_monitor(large_integer_num);
