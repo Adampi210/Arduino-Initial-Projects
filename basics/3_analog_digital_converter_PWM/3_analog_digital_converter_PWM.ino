@@ -15,6 +15,7 @@
   } while(false)
 
 #define BAUD_RATE 9600
+#define DELAY 50
 #define READING_PIN A0
 #define PWM_PIN 2
 
@@ -48,18 +49,20 @@ void loop() {
   Serial.println();
   
   //____________ PWM ______________
-  analogWrite(PWM_PIN, PWM_signal_width); // analogWrite(PIN, width); writes a PWM signal at a given pin
+  if(PWM_signal_width >= 0) {
+      analogWrite(PWM_PIN, PWM_signal_width); // analogWrite(PIN, width); writes a PWM signal at a given pin
+  }
 
-  // This code will increase diode brightness from 0 to full in a constant loop
-  if(PWM_signal_width < 255) {
-    PWM_signal_width += PWM_signal_change;
+  // This code will increase diode brightness from 0 to full and back to 0 in a constant loop
+  if(PWM_signal_width >= 255 || PWM_signal_width < 0 ) {
+    PWM_signal_change = PWM_signal_change * -1;
   }
-  else {
-    PWM_signal_width = 0;
-  }
+  PWM_signal_width += PWM_signal_change;
   
+  Serial.println(PWM_signal_width);
+
   
-  delay(300);
+  delay(DELAY);
 }
 
 // this function is used to make a simple voltmeter (not too precise tough)

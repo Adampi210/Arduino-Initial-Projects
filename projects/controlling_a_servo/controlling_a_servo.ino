@@ -1,11 +1,19 @@
 /*
  * This simple project controls a servo using different ways. First, a user must specify using UART the mode for the servo.
  * In first mode the position of the servo is changing by itself in a loop. In second mode the position is controlled using UART, and in the third it is controlled using external potentiometer.
+ * Things needed:
+ *  - arduino board
+ *  - servo motor
+ *  - potentiometer
+ *  - breadboard
+ *  - connector wires
+ *  - battery or a power source for the arduino
  */
 
 #include <Servo.h> // Include library to handle a servo
 
 #define BAUD_RATE 9600
+#define DELAY 200
 #define SERVO_PIN 2
 #define POT_PIN A0
 
@@ -24,7 +32,7 @@ void setup() {
 
 void loop() {
   run_in_a_given_mode(mode_of_operation);
-  delay(200);
+  delay(DELAY);
 }
 
 // This function asks the user to enter the mode of operation the servo should work in
