@@ -88,4 +88,4 @@ void blink_display(LiquidCrystal lcd) {
   
 }
 
-// TODO
+// TODO - timer, text moving along the LCD, LCD brightness adjust
